@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { useLocale } from "next-intl";
+
+import { NextIntlClientProvider, useMessages } from "next-intl";
+import SesionWrapper from "@/utils/SesionWrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,12 +19,15 @@ export default function RootLayout({
   children: React.ReactNode;
   params: { locale: string };
 }) {
-  const localeIs = useLocale();
-  console.log("localeIs", localeIs);
+  const messages = useMessages();
 
   return (
     <html lang={locale}>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <NextIntlClientProvider messages={messages}>
+          <SesionWrapper>{children}</SesionWrapper>
+        </NextIntlClientProvider>
+      </body>
     </html>
   );
 }

@@ -1,4 +1,8 @@
+"use client";
+
+import LocalizationTest from "@/components/LocalizationTest";
 import { Link } from "@/navigation";
+import { signOut, useSession } from "next-auth/react";
 import { useTranslations } from "next-intl";
 
 export default function Home({
@@ -6,18 +10,13 @@ export default function Home({
 }: {
   params: { locale: string };
 }) {
-  const t = useTranslations("homePage.title");
-
+  const session = useSession();
+  console.log(session);
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1>
-        {t("part1")} the {t("part2")}
-      </h1>
-      <Link href="/" locale="jp">
-        Switch to japanese
-      </Link>
-      <Link href="/about">About</Link>
-      <h3>Current locale is {locale}</h3>
+      <div>{session?.data?.user?.name}</div>
+      <button onClick={() => signOut()}>Logout</button>
+      <LocalizationTest locale={locale} />
     </main>
   );
 }
