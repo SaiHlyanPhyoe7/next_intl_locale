@@ -1,6 +1,21 @@
 {
-  "Home": {
-    "title": "Japanese Watashi!",
-    "subtitle": "This is a Japanese subtitle"
+  "common": {
+    "greeting": "Hello",
+    "goodbye": "Goodbye",
+    "submit": "Submit",
+    "cancel": "Cancel"
+  },
+  "homePage": {
+    "title": {
+      "part1": "Welcome to",
+      "part2": "our website"
+    },
+    "intro": "Explore our amazing features.",
+    "cta": "Get Started"
+  },
+  "aboutPage": {
+    "title": "About Us",
+    "mission": "Our mission is...",
+    "team": "Meet our team"
   }
 }
